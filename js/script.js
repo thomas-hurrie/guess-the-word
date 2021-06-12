@@ -1,5 +1,5 @@
 //ul where guessed letters appear
-const guessedList = document.querySelector(".guessed-letters");
+const guessedLettersElement = document.querySelector(".guessed-letters");
 //button with text "Guess!!"
 const guessButton = document.querySelector(".guess");
 //text input where player guesses letter
@@ -67,5 +67,41 @@ const makeGuess = function (inputLetter) {
     } else {
         guessedLetters.push(inputLetter);
         console.log(guessedLetters);
+        displayGuesses();
+        displayWordProgress(guessedLetters);
+    }
+};
+
+//update page with letters the player guesses
+const displayGuesses = function () {
+    guessedLettersElement.innerHTML = "";
+    for (const letter of guessedLetters) {
+        const li = document.createElement("li");
+        li.innerText = letter;
+        guessedLettersElement.append(li);
+    }
+};
+
+//update word in progress
+const displayWordProgress = function (guessedLetters) {
+    const wordUpper = word.toUpperCase();
+    const wordArray = wordUpper.split("");
+    const revealWord = [];
+    for (const letter of wordArray) {
+        if (guessedLetters.includes(letter)) {
+            revealWord.push(letter.toUpperCase());
+        } else {
+            revealWord.push("●");
+        }
+    }
+    wordProgress.innerText = revealWord.join("");
+    checkWin();
+};
+
+//check for win
+const checkWin = function () {
+    if (word.toUpperCase() === wordProgress.innerText) {
+        guessMessage.classList.add("win");
+        guessMessage.innerHTML = `<p class="highlight">You guessed the word!<br>Congrats!!!</p>`;
     }
 };
