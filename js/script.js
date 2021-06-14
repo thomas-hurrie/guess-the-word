@@ -77,9 +77,9 @@ const makeGuess = function (inputLetter) {
     } else {
         guessedLetters.push(inputLetter);
         console.log(guessedLetters);
-        displayWordProgress(guessedLetters);        
-        displayGuesses();
         guessCount(inputLetter);
+        displayGuesses();
+        displayWordProgress(guessedLetters);        
     }
 };
 
