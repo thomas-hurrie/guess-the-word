@@ -134,7 +134,11 @@ input:focus {
   color: white;
 }
 
+<<<<<<< HEAD
 /* animated background */
+=======
+/* animatied background */
+>>>>>>> 729664d1169ce77289eb54661c3353059939c270
 .win {
   padding: 0 1em;
   background: linear-gradient(-45deg, #ff9d64, #f5620c);
